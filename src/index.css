@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Kanit', sans-serif;
+
+  /* shadcn/ui tokens — dark palette matching the site */
+  --color-background: #0c0c0c;
+  --color-foreground: #d7e2ea;
+  --color-primary: #d7e2ea;
+  --color-primary-foreground: #0c0c0c;
+  --color-secondary: #1a1a1a;
+  --color-secondary-foreground: #d7e2ea;
+  --color-muted: #1a1a1a;
+  --color-muted-foreground: #8a949c;
+  --color-accent: #1f1f1f;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #2a2a2a;
+  --color-input: #2a2a2a;
+  --color-ring: #d7e2ea;
+}
+
+/* Reset lives in the base layer so Tailwind utilities (padding, margin) still win */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body,
+  #root {
+    background: #0c0c0c;
+  }
+
+  body {
+    font-family: 'Kanit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
