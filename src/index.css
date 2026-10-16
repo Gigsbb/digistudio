@@ -50,3 +50,12 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Georgian glyphs need their own font; keep the Latin brand typography. */
+html[lang='ka'] body {
+  font-family: 'Noto Sans Georgian', sans-serif;
+}
+html[lang='ka'] h2 {
+  font-size: clamp(2rem, 7.5vw, 100px) !important;
+  line-height: 1.3;
+}

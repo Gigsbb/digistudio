@@ -1,4 +1,6 @@
+import { useLanguage } from '@/lib/language-context'
 export function ContactButton() {
+  const { t } = useLanguage()
   return (
     <a
       href="#contact"
@@ -10,18 +12,19 @@ export function ContactButton() {
         outlineOffset: '-3px',
       }}
     >
-      Contact Me
+      {t('Contact Me')}
     </a>
   )
 }
 
 export function LiveProjectButton() {
+  const { t } = useLanguage()
   return (
     <a
       href="#"
       className="inline-block shrink-0 rounded-full border-2 border-[#D7E2EA] px-8 py-3 text-sm font-medium tracking-widest text-[#D7E2EA] uppercase transition-colors duration-200 hover:bg-[#D7E2EA]/10 sm:px-10 sm:py-3.5 sm:text-base"
     >
-      Live Project
+      {t('Live Project')}
     </a>
   )
 }
