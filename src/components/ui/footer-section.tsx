@@ -1,6 +1,7 @@
 import { useLanguage } from '@/lib/language'
 import type { ComponentProps, ComponentType, ReactNode } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
+import { MessageCircle, Phone } from 'lucide-react'
 
 import { Icons } from '@/components/ui/icons'
 
@@ -51,6 +52,19 @@ export function Footer() {
           >
             DigitalHub
           </span>
+          <div className="space-y-3 text-[#D7E2EA]">
+            <h3 className="text-xs font-light tracking-widest text-[#D7E2EA]/60 uppercase">{t.contact}</h3>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm sm:text-base">
+              <a href="tel:+995500333558" className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap transition-opacity hover:opacity-70">
+                <Phone aria-hidden="true" className="size-4 shrink-0" />
+                +995 500 333 558
+              </a>
+              <a href="https://wa.me/995500333558" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 transition-opacity hover:opacity-70">
+                <MessageCircle aria-hidden="true" className="size-4 shrink-0" />
+                WhatsApp
+              </a>
+            </div>
+          </div>
           <p
             className="mt-8 leading-relaxed font-light text-[#D7E2EA] md:mt-4"
             style={{ fontSize: 'clamp(0.85rem, 1.2vw, 1.1rem)', opacity: 0.6 }}
