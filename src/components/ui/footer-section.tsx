@@ -1,7 +1,7 @@
 import { useLanguage } from '@/lib/language'
 import type { ComponentProps, ComponentType, ReactNode } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { MessageCircle, Phone } from 'lucide-react'
+import { Mail, MessageCircle, Phone } from 'lucide-react'
 
 import { Icons } from '@/components/ui/icons'
 
@@ -9,6 +9,7 @@ interface FooterLink {
   title: string
   href: string
   icon?: ComponentType<{ className?: string }>
+  placeholder?: string
 }
 
 interface FooterSection {
@@ -32,13 +33,13 @@ const footerLinks: FooterSection[] = [
     links: [
       { title: 'Facebook', href: 'https://www.facebook.com/digitalhubstudio.ge', icon: Icons.facebook },
       { title: 'Instagram', href: '#', icon: Icons.instagram },
-      { title: 'LinkedIn', href: '#', icon: Icons.linkedin },
+      { title: 'Gmail', href: '', icon: Mail, placeholder: 'your-email@gmail.com' },
     ],
   },
 ]
 
 export function Footer() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const navLabels: Record<string, string> = { Home: t.home, About: t.about, Price: t.price, Projects: t.projects, Contact: t.contact }
   return (
     <footer className="relative flex w-full flex-col items-center justify-center border-t border-[#D7E2EA]/10 bg-[#0C0C0C] bg-[radial-gradient(35%_128px_at_50%_0%,rgba(215,226,234,0.06),transparent)] px-6 py-12 md:px-10 lg:py-16">
@@ -84,7 +85,8 @@ export function Footer() {
                   {section.links.map((link) => (
                     <li key={link.title}>
                       <a
-                        href={link.href}
+                        href={link.placeholder ? undefined : link.href}
+                        aria-disabled={link.placeholder ? true : undefined}
                         target={link.href.startsWith('https://') ? '_blank' : undefined}
                         rel={link.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
                         className="inline-flex items-center transition-opacity duration-200 hover:opacity-70"
@@ -93,6 +95,12 @@ export function Footer() {
                         {link.icon && <link.icon className="me-3 size-[0.9em]" />}
                         {navLabels[link.title] ?? link.title}
                       </a>
+                      {link.placeholder && (
+                        <span className="mt-1 block text-xs font-normal tracking-normal text-[#D7E2EA]/60 normal-case">
+                          <span className="block">{language === 'ka' ? 'სატესტო' : 'Demo'}</span>
+                          <span className="break-all">{link.placeholder}</span>
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>
