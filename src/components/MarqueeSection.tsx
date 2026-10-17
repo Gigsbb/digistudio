@@ -1,71 +1,82 @@
 import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
-const images = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+const projects = [
+  { name: 'DigiStudio', url: 'https://digistudio.pages.dev/#about', image: '/img/websites/digistudio.svg' },
+  { name: 'Defence GE', url: 'https://defence-ge.defence-ge.workers.dev/ka/', image: '/img/websites/defence.svg' },
+  { name: 'QRMenus', url: 'https://qrmenus.ge/', image: '/img/websites/qrmenus.svg' },
+  { name: 'Supra', url: 'https://supra-web.pages.dev/', image: '/img/websites/supra.svg' },
+  { name: 'NMT Shop', url: 'https://nmtshopdemo.netlify.app/home', image: '/img/websites/nmtshop.svg' },
 ]
-
-const row1 = images.slice(0, 11)
-const row2 = images.slice(11)
+const secondRow = [...projects.slice(3), ...projects.slice(0, 3)]
 
 export default function MarqueeSection() {
   const ref = useRef<HTMLElement>(null)
   const [offset, setOffset] = useState(0)
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
-    const onScroll = () => {
+    if (reduceMotion) return
+    let frame = 0
+    const update = () => {
       const el = ref.current
       if (!el) return
-      const sectionTop = el.getBoundingClientRect().top + window.scrollY
-      setOffset((window.scrollY - sectionTop + window.innerHeight) * 0.3)
+      setOffset(Math.max(0, Math.min(800, (window.innerHeight - el.getBoundingClientRect().top) * 0.3)))
     }
-    onScroll()
+    const onScroll = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(update)
+    }
+    update()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [reduceMotion])
 
+  const movement = reduceMotion ? 0 : offset
   return (
-    <section ref={ref} className="overflow-hidden bg-[#0C0C0C] pt-24 pb-10 sm:pt-32 md:pt-40">
-      <div className="flex flex-col gap-3">
-        <Row images={row1} transform={`translateX(${offset - 200}px)`} />
-        <Row images={row2} transform={`translateX(${-(offset - 200)}px)`} />
+    <section ref={ref} aria-label="Our websites" className="overflow-hidden bg-[#0C0C0C] pt-24 pb-10 sm:pt-32 md:pt-40">
+      <div className="flex flex-col gap-3 [--preview-width:clamp(280px,78vw,420px)]">
+        <Row projects={projects} transform={`translateX(${-movement}px)`} />
+        <Row projects={secondRow} transform={`translateX(calc(-5 * (var(--preview-width) + 12px) + ${movement}px))`} />
       </div>
     </section>
   )
 }
 
-function Row({ images, transform }: { images: string[]; transform: string }) {
-  const tripled = [...images, ...images, ...images]
+function Row({ projects, transform }: { projects: typeof secondRow; transform: string }) {
   return (
     <div className="flex w-max gap-3" style={{ transform, willChange: 'transform' }}>
-      {tripled.map((src, i) => (
-        <img
-          key={i}
-          src={src}
-          alt=""
-          loading="lazy"
-          className="h-[270px] w-[420px] shrink-0 rounded-2xl object-cover"
-        />
-      ))}
+      {[0, 1, 2, 3].flatMap(copy => projects.map(project => (
+        <a
+          key={`${copy}-${project.name}`}
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${project.name} — open website (new tab)`}
+          aria-hidden={copy > 0 ? true : undefined}
+          tabIndex={copy > 0 ? -1 : undefined}
+          className="group relative block aspect-[14/9] w-[var(--preview-width)] shrink-0 overflow-hidden rounded-2xl bg-[#1a1a1a] outline-offset-[-3px] focus-visible:outline-2 focus-visible:outline-white"
+        >
+          <img
+            src={project.image}
+            alt={`${project.name} website preview`}
+            loading="lazy"
+            decoding="async"
+            width={1440}
+            height={926}
+            className="h-full w-full object-cover object-top"
+          />
+          <span className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/80 to-transparent px-5 pt-12 pb-4 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100">
+            <span>{project.name}</span>
+            <span aria-hidden="true">↗</span>
+          </span>
+        </a>
+      )))}
     </div>
   )
 }
