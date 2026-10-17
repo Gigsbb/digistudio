@@ -2,31 +2,22 @@ import FadeIn from './FadeIn'
 
 const services = [
   {
-    name: '3D Modeling',
+    name: 'ვებსაიტების შექმნა',
     description:
-      'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.',
+      'ვქმნით თანამედროვე ბიზნესსაიტებს, ონლაინ მაღაზიებსა და QR მენიუებს — შენი ბიზნესის საჭიროებებზე მორგებული დიზაინით, კომპიუტერისა და მობილურისთვის.',
   },
   {
-    name: 'Rendering',
+    name: 'სოციალური მედიის მართვა',
     description:
-      'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.',
+      'ვმართავთ Facebook და Instagram გვერდებს, ვგეგმავთ კონტენტს და ვამზადებთ პოსტებს, რომ შენს ბიზნესს აქტიური და თანმიმდევრული ონლაინ კომუნიკაცია ჰქონდეს.',
   },
   {
-    name: 'Motion Design',
+    name: 'Google ბიზნესპროფილი',
     description:
-      'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.',
-  },
-  {
-    name: 'Branding',
-    description:
-      'Crafting cohesive visual identities -- from logos to full brand systems -- that communicate a clear and memorable presence.',
-  },
-  {
-    name: 'Web Design',
-    description:
-      'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.',
+      'ვქმნით და ვმართავთ Google ბიზნესპროფილს — ვამატებთ ბიზნესს Google Maps-ზე და ვაახლებთ მისამართს, სამუშაო საათებსა და საკონტაქტო ინფორმაციას, რომ მომხმარებლებმა მარტივად გიპოვონ.',
   },
 ]
+
 
 export default function ServicesSection() {
   return (
