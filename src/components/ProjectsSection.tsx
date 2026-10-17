@@ -1,4 +1,3 @@
-import { useLanguage } from '@/lib/language-context'
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
 import FadeIn from './FadeIn'
@@ -31,7 +30,6 @@ const projects = [
 type Project = (typeof projects)[number]
 
 export default function ProjectsSection() {
-  const { t } = useLanguage()
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
 
@@ -45,7 +43,7 @@ export default function ProjectsSection() {
           className="hero-heading mb-10 text-center leading-none font-black tracking-tight uppercase sm:mb-14 md:mb-16"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          {t('Project')}
+          Project
         </h2>
       </FadeIn>
 
@@ -82,7 +80,6 @@ function ProjectCard({
   range: [number, number]
   targetScale: number
 }) {
-  const { t } = useLanguage()
   const scale = useTransform(progress, range, [1, targetScale])
   const imgRadius = 'rounded-[40px] sm:rounded-[50px] md:rounded-[60px]'
 
@@ -102,7 +99,7 @@ function ProjectCard({
             </span>
             <div className="flex flex-col gap-1">
               <span className="text-xs font-light tracking-widest text-[#D7E2EA]/60 uppercase sm:text-sm">
-                {t(project.category)}
+                {project.category}
               </span>
               <h3
                 className="font-medium text-[#D7E2EA] uppercase"
@@ -119,14 +116,14 @@ function ProjectCard({
           <div className="flex w-[40%] flex-col gap-3 sm:gap-4">
             <img
               src={project.col1[0]}
-              alt={`${project.name} ${t('preview')} 1`}
+              alt={`${project.name} preview 1`}
               loading="lazy"
               className={`w-full object-cover ${imgRadius}`}
               style={{ height: 'clamp(130px, 16vw, 230px)' }}
             />
             <img
               src={project.col1[1]}
-              alt={`${project.name} ${t('preview')} 2`}
+              alt={`${project.name} preview 2`}
               loading="lazy"
               className={`w-full object-cover ${imgRadius}`}
               style={{ height: 'clamp(160px, 22vw, 340px)' }}
@@ -135,7 +132,7 @@ function ProjectCard({
           <div className="w-[60%]">
             <img
               src={project.col2}
-              alt={`${project.name} ${t('main preview')}`}
+              alt={`${project.name} main preview`}
               loading="lazy"
               className={`h-full w-full object-cover ${imgRadius}`}
             />
