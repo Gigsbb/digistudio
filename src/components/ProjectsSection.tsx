@@ -1,3 +1,4 @@
+import { useLanguage } from '@/lib/language'
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
 import FadeIn from './FadeIn'
@@ -33,6 +34,7 @@ const projects = [
 type Project = (typeof projects)[number]
 
 export default function ProjectsSection() {
+  const { t } = useLanguage()
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
 
@@ -46,7 +48,7 @@ export default function ProjectsSection() {
           className="hero-heading mb-10 text-center leading-none font-black tracking-tight uppercase sm:mb-14 md:mb-16"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          Project
+          {t.projectTitle}
         </h2>
       </FadeIn>
 
@@ -83,6 +85,7 @@ function ProjectCard({
   range: [number, number]
   targetScale: number
 }) {
+  const { t } = useLanguage()
   const scale = useTransform(progress, range, [1, targetScale])
   const imgRadius = 'rounded-[40px] sm:rounded-[50px] md:rounded-[60px]'
 
@@ -102,7 +105,7 @@ function ProjectCard({
             </span>
             <div className="flex flex-col gap-1">
               <span className="text-xs font-light tracking-widest text-[#D7E2EA]/60 uppercase sm:text-sm">
-                {project.category}
+                {t.categories[index]}
               </span>
               <h3
                 className="font-medium text-[#D7E2EA] uppercase"
