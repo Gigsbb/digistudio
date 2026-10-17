@@ -3,27 +3,30 @@ import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion
 import FadeIn from './FadeIn'
 import { LiveProjectButton } from './Buttons'
 
-const img = (id: string) =>
-  `https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2F${id}.png&w=1280&q=85`
-
 const projects = [
   {
-    name: 'Nextlevel Studio',
-    category: 'Client',
-    col1: [img('hf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db'), img('hf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8')],
-    col2: img('hf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327'),
+    name: 'Defence GE',
+    category: 'Pest Control',
+    image: '/img/websites/defence.svg',
+    url: 'https://defence-ge.defence-ge.workers.dev/ka/',
   },
   {
-    name: 'Aura Brand Identity',
-    category: 'Personal',
-    col1: [img('hf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f'), img('hf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1')],
-    col2: img('hf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea'),
+    name: 'QRMenus',
+    category: 'Digital Menu',
+    image: '/img/websites/qrmenus.svg',
+    url: 'https://qrmenus.ge/',
   },
   {
-    name: 'Solaris Digital',
-    category: 'Client',
-    col1: [img('hf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f'), img('hf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b')],
-    col2: img('hf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee'),
+    name: 'Supra',
+    category: 'Catering',
+    image: '/img/websites/supra.svg',
+    url: 'https://supra-web.pages.dev/',
+  },
+  {
+    name: 'NMT Shop',
+    category: 'E-commerce Demo',
+    image: '/img/websites/nmtshop.svg',
+    url: 'https://nmtshopdemo.netlify.app/home',
   },
 ]
 
@@ -109,35 +112,18 @@ function ProjectCard({
               </h3>
             </div>
           </div>
-          <LiveProjectButton />
+          <LiveProjectButton href={project.url} projectName={project.name} />
         </div>
 
-        <div className="flex gap-3 sm:gap-4">
-          <div className="flex w-[40%] flex-col gap-3 sm:gap-4">
-            <img
-              src={project.col1[0]}
-              alt={`${project.name} preview 1`}
-              loading="lazy"
-              className={`w-full object-cover ${imgRadius}`}
-              style={{ height: 'clamp(130px, 16vw, 230px)' }}
-            />
-            <img
-              src={project.col1[1]}
-              alt={`${project.name} preview 2`}
-              loading="lazy"
-              className={`w-full object-cover ${imgRadius}`}
-              style={{ height: 'clamp(160px, 22vw, 340px)' }}
-            />
-          </div>
-          <div className="w-[60%]">
-            <img
-              src={project.col2}
-              alt={`${project.name} main preview`}
-              loading="lazy"
-              className={`h-full w-full object-cover ${imgRadius}`}
-            />
-          </div>
-        </div>
+        <img
+          src={project.image}
+          alt={`${project.name} website preview`}
+          loading="lazy"
+          decoding="async"
+          width={1440}
+          height={926}
+          className={`aspect-[1440/926] max-h-[55vh] w-full object-cover object-top ${imgRadius}`}
+        />
       </motion.article>
     </div>
   )
