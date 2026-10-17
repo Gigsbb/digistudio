@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 
 const projects = [
-  { name: 'DigiStudio', image: '/img/websites/digistudio.svg' },
   { name: 'Defence GE', image: '/img/websites/defence.svg' },
   { name: 'QRMenus', image: '/img/websites/qrmenus.svg' },
   { name: 'Supra', image: '/img/websites/supra.svg' },
   { name: 'NMT Shop', image: '/img/websites/nmtshop.svg' },
 ]
-const secondRow = [...projects.slice(3), ...projects.slice(0, 3)]
+const secondRow = [...projects.slice(2), ...projects.slice(0, 2)]
 
 export default function MarqueeSection() {
   const ref = useRef<HTMLElement>(null)
@@ -42,7 +41,7 @@ export default function MarqueeSection() {
     <section ref={ref} aria-label="Our websites" className="overflow-hidden bg-[#0C0C0C] pt-24 pb-10 sm:pt-32 md:pt-40">
       <div className="flex flex-col gap-3 [--preview-width:clamp(280px,78vw,420px)]">
         <Row projects={projects} transform={`translateX(${-movement}px)`} />
-        <Row projects={secondRow} transform={`translateX(calc(-5 * (var(--preview-width) + 12px) + ${movement}px))`} />
+        <Row projects={secondRow} transform={`translateX(calc(-${projects.length} * (var(--preview-width) + 12px) + ${movement}px))`} />
       </div>
     </section>
   )
