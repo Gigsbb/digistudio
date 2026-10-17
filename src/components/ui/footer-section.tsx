@@ -29,9 +29,8 @@ const footerLinks: FooterSection[] = [
   {
     label: 'Social Links',
     links: [
-      { title: 'Facebook', href: '#', icon: Icons.facebook },
+      { title: 'Facebook', href: 'https://www.facebook.com/digitalhubstudio.ge', icon: Icons.facebook },
       { title: 'Instagram', href: '#', icon: Icons.instagram },
-      { title: 'Youtube', href: '#', icon: Icons.youtube },
       { title: 'LinkedIn', href: '#', icon: Icons.linkedin },
     ],
   },
@@ -72,6 +71,8 @@ export function Footer() {
                     <li key={link.title}>
                       <a
                         href={link.href}
+                        target={link.href.startsWith('https://') ? '_blank' : undefined}
+                        rel={link.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
                         className="inline-flex items-center transition-opacity duration-200 hover:opacity-70"
                         style={{ fontSize: 'clamp(1rem, 1.6vw, 1.4rem)' }}
                       >
