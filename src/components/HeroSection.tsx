@@ -1,10 +1,13 @@
+import { useLanguage } from '@/lib/language'
+import { LanguageSelector } from '@/components/ui/language-selector'
 import FadeIn from './FadeIn'
 import Magnet from './Magnet'
 import { ContactButton } from './Buttons'
 
-const navLinks = ['About', 'Price', 'Projects', 'Contact']
+const navLinks = ['about', 'price', 'projects', 'contact'] as const
 
 export default function HeroSection() {
+  const { t } = useLanguage()
   return (
     <section className="relative flex h-screen flex-col" style={{ overflowX: 'clip' }}>
       <FadeIn as="nav" delay={0} y={-20} className="relative z-30 flex justify-between px-6 pt-6 md:px-10 md:pt-8">
@@ -12,9 +15,9 @@ export default function HeroSection() {
           <a
             key={link}
             href={`#${link.toLowerCase()}`}
-            className="text-sm font-medium tracking-wider text-[#D7E2EA] uppercase transition-opacity duration-200 hover:opacity-70 md:text-lg lg:text-[1.4rem]"
+            className="text-xs font-medium tracking-wide sm:text-sm sm:tracking-wider text-[#D7E2EA] uppercase transition-opacity duration-200 hover:opacity-70 md:text-lg lg:text-[1.4rem]"
           >
-            {link}
+            {t[link]}
           </a>
         ))}
       </FadeIn>
@@ -27,16 +30,11 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="relative z-20 mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
+      <div className="relative z-20 mt-auto flex items-center justify-between gap-2 px-5 pb-7 sm:gap-4 sm:px-6 sm:pb-8 md:px-10 md:pb-10">
         <FadeIn delay={0.35} y={20}>
-          <p
-            className="max-w-[160px] leading-snug font-light tracking-wide text-[#D7E2EA] uppercase sm:max-w-[220px] md:max-w-[260px]"
-            style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
-          >
-            a 3d creator driven by crafting striking and unforgettable projects
-          </p>
+          <LanguageSelector />
         </FadeIn>
-        <FadeIn delay={0.5} y={20}>
+        <FadeIn delay={0.5} y={20} className="[&_a]:px-4 sm:[&_a]:px-10 md:[&_a]:px-12">
           <ContactButton />
         </FadeIn>
       </div>
