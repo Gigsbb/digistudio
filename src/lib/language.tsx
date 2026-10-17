@@ -4,9 +4,9 @@ export type Language = 'en' | 'ka'
 const copy = {
   en: {
     about: 'About', price: 'Price', projects: 'Projects', contact: 'Contact', home: 'Home',
-    aboutTitle: 'About me',
-    aboutText: "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!",
-    contactMe: 'Contact Me', liveProject: 'Live Project', services: 'Services', projectTitle: 'Project',
+    aboutTitle: 'About us',
+    aboutText: "We focus on branding, web design, and user experience. We enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!",
+    contactMe: 'Contact Us', liveProject: 'Live Project', services: 'Services', projectTitle: 'Project',
     navigation: 'Navigation', socialLinks: 'Social Links', rights: 'All rights reserved.',
     selectLanguage: 'Select language', close: 'Close language menu', newTab: 'opens in a new tab',
     categories: ['Pest Control', 'Digital Menu', 'Catering', 'E-commerce Demo'],
@@ -21,9 +21,9 @@ const copy = {
   },
   ka: {
     about: 'ჩვენ შესახებ', price: 'სერვისები', projects: 'პროექტები', contact: 'კონტაქტი', home: 'მთავარი',
-    aboutTitle: 'ჩემ შესახებ',
-    aboutText: 'დიზაინში ხუთ წელზე მეტი გამოცდილებით, ვმუშაობ ბრენდინგზე, ვებდიზაინსა და მომხმარებლის გამოცდილებაზე. სიამოვნებით ვთანამშრომლობ ბიზნესებთან, რომლებსაც გამორჩევა და საკუთარი თავის საუკეთესოდ წარმოჩენა სურთ. მოდი, ერთად შევქმნათ რაღაც განსაკუთრებული!',
-    contactMe: 'დამიკავშირდი', liveProject: 'საიტის ნახვა', services: 'სერვისები', projectTitle: 'პროექტები',
+    aboutTitle: 'ჩვენ შესახებ',
+    aboutText: 'ვმუშაობთ ბრენდინგზე, ვებდიზაინსა და მომხმარებლის გამოცდილებაზე. სიამოვნებით ვთანამშრომლობთ ბიზნესებთან, რომლებსაც გამორჩევა და საკუთარი თავის საუკეთესოდ წარმოჩენა სურთ. მოდი, ერთად შევქმნათ რაღაც განსაკუთრებული!',
+    contactMe: 'დაგვიკავშირდი', liveProject: 'საიტის ნახვა', services: 'სერვისები', projectTitle: 'პროექტები',
     navigation: 'ნავიგაცია', socialLinks: 'სოციალური ქსელები', rights: 'ყველა უფლება დაცულია.',
     selectLanguage: 'აირჩიე ენა', close: 'ენის მენიუს დახურვა', newTab: 'იხსნება ახალ ჩანართში',
     categories: ['მავნებლების კონტროლი', 'ციფრული მენიუ', 'ქეითერინგი', 'ონლაინ მაღაზიის დემო'],
