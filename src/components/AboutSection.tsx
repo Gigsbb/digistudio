@@ -1,11 +1,10 @@
+import { useLanguage } from '@/lib/language'
 import FadeIn from './FadeIn'
 import AnimatedText from './AnimatedText'
 import { ContactButton } from './Buttons'
 
-const ABOUT_TEXT =
-  "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!"
-
 export default function AboutSection() {
+  const { t, language } = useLanguage()
   return (
     <section
       id="about"
@@ -55,11 +54,12 @@ export default function AboutSection() {
               className="hero-heading text-center leading-none font-black tracking-tight uppercase"
               style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
             >
-              About me
+              {t.aboutTitle}
             </h2>
           </FadeIn>
           <AnimatedText
-            text={ABOUT_TEXT}
+            key={language}
+            text={t.aboutText}
             className="max-w-[560px] text-center leading-relaxed font-medium text-[#D7E2EA]"
             style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
           />
