@@ -31,10 +31,10 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-20 mt-auto flex items-center justify-between gap-2 px-5 pb-7 sm:gap-4 sm:px-6 sm:pb-8 md:px-10 md:pb-10">
-        <FadeIn delay={0.35} y={20}>
+        <FadeIn delay={0.35} y={20} className="flex items-center">
           <LanguageSelector />
         </FadeIn>
-        <FadeIn delay={0.5} y={20} className="[&_a]:px-4 sm:[&_a]:px-10 md:[&_a]:px-12">
+        <FadeIn delay={0.35} y={20} className="flex items-center [&_a]:px-4 sm:[&_a]:px-10 md:[&_a]:px-12">
           <ContactButton />
         </FadeIn>
       </div>
