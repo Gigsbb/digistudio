@@ -1,35 +1,9 @@
+import { useLanguage } from '@/lib/language'
 import FadeIn from './FadeIn'
 
-const services = [
-  {
-    name: 'Branding',
-    description:
-      'Logo design, color palettes, and a consistent visual identity that reflects your business and helps customers recognize your brand.',
-  },
-  {
-    name: 'Web Design & Development',
-    description:
-      'Modern business websites, online stores, and QR menus with custom designs tailored to your business and built for desktop and mobile.',
-  },
-  {
-    name: 'Social Media Management',
-    description:
-      'Facebook and Instagram page management, content planning, and post creation to give your business an active and consistent online presence.',
-  },
-  {
-    name: 'Digital Advertising',
-    description:
-      'Planning and management of Facebook and Instagram advertising campaigns to reach relevant audiences and promote your products and services.',
-  },
-  {
-    name: 'Google Business Profile',
-    description:
-      'Profile setup and management, Google Maps listings, and updates to your address, opening hours, and contact details so customers can easily find your business.',
-  },
-]
-
-
 export default function ServicesSection() {
+  const { t } = useLanguage()
+  const services = t.serviceNames.map((name, i) => ({ name, description: t.serviceDescriptions[i] }))
   return (
     <section
       id="price"
@@ -40,7 +14,7 @@ export default function ServicesSection() {
           className="mb-16 text-center leading-none font-black tracking-tight text-[#0C0C0C] uppercase sm:mb-20 md:mb-28"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          Services
+          {t.services}
         </h2>
       </FadeIn>
 
