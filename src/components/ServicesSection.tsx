@@ -2,19 +2,19 @@ import FadeIn from './FadeIn'
 
 const services = [
   {
-    name: 'ვებსაიტების შექმნა',
+    name: 'Website Development',
     description:
-      'ვქმნით თანამედროვე ბიზნესსაიტებს, ონლაინ მაღაზიებსა და QR მენიუებს — შენი ბიზნესის საჭიროებებზე მორგებული დიზაინით, კომპიუტერისა და მობილურისთვის.',
+      'Modern business websites, online stores, and QR menus with custom designs tailored to your business and built for desktop and mobile.',
   },
   {
-    name: 'სოციალური მედიის მართვა',
+    name: 'Social Media Management',
     description:
-      'ვმართავთ Facebook და Instagram გვერდებს, ვგეგმავთ კონტენტს და ვამზადებთ პოსტებს, რომ შენს ბიზნესს აქტიური და თანმიმდევრული ონლაინ კომუნიკაცია ჰქონდეს.',
+      'Facebook and Instagram page management, content planning, and post creation to give your business an active and consistent online presence.',
   },
   {
-    name: 'Google ბიზნესპროფილი',
+    name: 'Google Business Profile',
     description:
-      'ვქმნით და ვმართავთ Google ბიზნესპროფილს — ვამატებთ ბიზნესს Google Maps-ზე და ვაახლებთ მისამართს, სამუშაო საათებსა და საკონტაქტო ინფორმაციას, რომ მომხმარებლებმა მარტივად გიპოვონ.',
+      'Profile setup and management, Google Maps listings, and updates to your address, opening hours, and contact details so customers can easily find your business.',
   },
 ]
 
