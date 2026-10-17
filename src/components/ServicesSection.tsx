@@ -2,7 +2,12 @@ import FadeIn from './FadeIn'
 
 const services = [
   {
-    name: 'Website Development',
+    name: 'Branding',
+    description:
+      'Logo design, color palettes, and a consistent visual identity that reflects your business and helps customers recognize your brand.',
+  },
+  {
+    name: 'Web Design & Development',
     description:
       'Modern business websites, online stores, and QR menus with custom designs tailored to your business and built for desktop and mobile.',
   },
@@ -10,6 +15,11 @@ const services = [
     name: 'Social Media Management',
     description:
       'Facebook and Instagram page management, content planning, and post creation to give your business an active and consistent online presence.',
+  },
+  {
+    name: 'Digital Advertising',
+    description:
+      'Planning and management of Facebook and Instagram advertising campaigns to reach relevant audiences and promote your products and services.',
   },
   {
     name: 'Google Business Profile',
